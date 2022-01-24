@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("OggMp3Converter")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("OGG & MP3 Converter")]
+[assembly: AssemblyDescription("Simple app for audio converter (for HaxeFlixel use)")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("SavanDev")]
 [assembly: AssemblyProduct("OggMp3Converter")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCopyright("Copyright © SavanDev 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
