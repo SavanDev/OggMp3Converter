@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace OggMp3Converter
 {
+    enum Language
+    {
+        English,
+        Spanish
+    }
+
     public partial class Form1 : Form
     {
         private CSAudioConverter.AudioConverter audioConverter;
         private OpenFileDialog openFileDialog;
         private FolderBrowserDialog folderBrowserDialog;
+        private Language language = Language.English;
 
         private string fileName;
 
@@ -24,7 +31,7 @@ namespace OggMp3Converter
             openFileDialog = new OpenFileDialog();
             folderBrowserDialog = new FolderBrowserDialog();
 
-            openFileDialog.Title = "Selecciona un archivo a convertir";
+            openFileDialog.Title = language == Language.English ? "Select a file to convert" : "Selecciona un archivo a convertir";
             openFileDialog.Filter = "Sound file (*.ogg;*.mp3)|*.ogg;*.mp3|OGG Vorbis (*.ogg)|*.ogg|MP3 file (*.mp3)|*.mp3";
 
             audioConverter.ConvertProgress += AudioConverter_ConvertProgress;
@@ -37,27 +44,29 @@ namespace OggMp3Converter
 
         private void AudioConverter_ConvertStart(object sender, EventArgs e)
         {
-            lblStatus.Text = "Status: STARTING";
+            lblStatus.Text = language == Language.English ? "Status: STARTING" : "Estado: INICIANDO";
             progressBar.Value = 0;
             btnConvert.Enabled = false;
+            toolLanguage.Enabled = false;
         }
 
         private void AudioConverter_ConvertDone(object sender, EventArgs e)
         {
-            MessageBox.Show("File converted successfully!");
-            lblStatus.Text = "Status: IDLE";
+            MessageBox.Show(language == Language.English ? "File converted successfully!" : "¡Archivo convertido con éxito!");
+            lblStatus.Text = language == Language.English ? "Status: IDLE" : "Estado: INACTIVO";
             btnConvert.Enabled = true;
+            toolLanguage.Enabled = true;
         }
 
         private void AudioConverter_ConvertError(object sender, CSAudioConverter.MessageArgs e)
         {
-            MessageBox.Show("An error has occurred:\n" + e.String);
-            lblStatus.Text = "Status: ERROR";
+            MessageBox.Show((language == Language.English ? "An error has occurred:\n" : "Ha ocurrido un error:\n") + e.String);
+            lblStatus.Text = language == Language.English ? "Status: ERROR" : "Estado: ERROR";
         }
 
         private void AudioConverter_ConvertProgress(object sender, CSAudioConverter.PercentArgs e)
         {
-            lblStatus.Text = "Status: CONVERTING (" + e.Number + ")";
+            lblStatus.Text = (language == Language.English ? "Status: CONVERTING" : "Estado: CONVIRTIENDO") + $" ({e.Number}%)";
             progressBar.Value = e.Number;
         }
 
@@ -102,6 +111,32 @@ namespace OggMp3Converter
 
                 audioConverter.Convert();
             }
+        }
+
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            language = Language.English;
+            label1.Text = "File to convert";
+            label2.Text = "Output folder";
+            btnInput.Text = btnOutput.Text = "Examine";
+            btnConvert.Text = "Convert";
+            toolLanguage.Text = "English";
+            englishToolStripMenuItem.Checked = true;
+            spanishToolStripMenuItem.Checked = false;
+            lblStatus.Text = "Status: IDLE";
+        }
+
+        private void spanishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            language = Language.Spanish;
+            label1.Text = "Archivo a convertir";
+            label2.Text = "Carpeta destino";
+            btnInput.Text = btnOutput.Text = "Examinar";
+            btnConvert.Text = "Convertir";
+            toolLanguage.Text = "Spanish";
+            englishToolStripMenuItem.Checked = false;
+            spanishToolStripMenuItem.Checked = true;
+            lblStatus.Text = "Estado: INACTIVO";
         }
     }
 }

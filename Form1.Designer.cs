@@ -41,6 +41,9 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolLanguage = new System.Windows.Forms.ToolStripDropDownButton();
+            this.spanishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,9 +52,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 13);
+            this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Archivo a convertir";
+            this.label1.Text = "File to convert";
             // 
             // txtInput
             // 
@@ -90,9 +93,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Carpeta destino";
+            this.label2.Text = "Ouput folder";
             // 
             // txtOutput
             // 
@@ -110,7 +113,7 @@
             this.btnConvert.Name = "btnConvert";
             this.btnConvert.Size = new System.Drawing.Size(111, 23);
             this.btnConvert.TabIndex = 8;
-            this.btnConvert.Text = "Convertir";
+            this.btnConvert.Text = "Convert";
             this.btnConvert.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnConvert.UseVisualStyleBackColor = true;
             this.btnConvert.Click += new System.EventHandler(this.btnConvert_Click);
@@ -123,7 +126,7 @@
             this.btnOutput.Name = "btnOutput";
             this.btnOutput.Size = new System.Drawing.Size(75, 23);
             this.btnOutput.TabIndex = 7;
-            this.btnOutput.Text = "Examinar";
+            this.btnOutput.Text = "Examine";
             this.btnOutput.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnOutput.UseVisualStyleBackColor = true;
             this.btnOutput.Click += new System.EventHandler(this.btnOutput_Click);
@@ -136,7 +139,7 @@
             this.btnInput.Name = "btnInput";
             this.btnInput.Size = new System.Drawing.Size(75, 23);
             this.btnInput.TabIndex = 2;
-            this.btnInput.Text = "Examinar";
+            this.btnInput.Text = "Examine";
             this.btnInput.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnInput.UseVisualStyleBackColor = true;
             this.btnInput.Click += new System.EventHandler(this.btnInput_Click);
@@ -151,7 +154,8 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblStatus});
+            this.lblStatus,
+            this.toolLanguage});
             this.statusStrip1.Location = new System.Drawing.Point(0, 146);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(468, 22);
@@ -161,8 +165,38 @@
             // lblStatus
             // 
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(68, 17);
+            this.lblStatus.Size = new System.Drawing.Size(379, 17);
+            this.lblStatus.Spring = true;
             this.lblStatus.Text = "Status: IDLE";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // toolLanguage
+            // 
+            this.toolLanguage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolLanguage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.spanishToolStripMenuItem,
+            this.englishToolStripMenuItem});
+            this.toolLanguage.Image = global::OggMp3Converter.Properties.Resources.preferences_desktop_font;
+            this.toolLanguage.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolLanguage.Name = "toolLanguage";
+            this.toolLanguage.Size = new System.Drawing.Size(74, 20);
+            this.toolLanguage.Text = "English";
+            // 
+            // spanishToolStripMenuItem
+            // 
+            this.spanishToolStripMenuItem.Name = "spanishToolStripMenuItem";
+            this.spanishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.spanishToolStripMenuItem.Text = "Spanish";
+            this.spanishToolStripMenuItem.Click += new System.EventHandler(this.spanishToolStripMenuItem_Click);
+            // 
+            // englishToolStripMenuItem
+            // 
+            this.englishToolStripMenuItem.Checked = true;
+            this.englishToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.englishToolStripMenuItem.Text = "English";
+            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -206,6 +240,9 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
+        private System.Windows.Forms.ToolStripDropDownButton toolLanguage;
+        private System.Windows.Forms.ToolStripMenuItem spanishToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
     }
 }
 
